@@ -36,7 +36,7 @@ class Brab(models.Model):
         return reverse('brab', kwargs={"pk": self.id})
 
     def __unicode__(self):
-        return self.title
+        return unicode(self.title)
 
 
 class Category(models.Model):
@@ -57,7 +57,7 @@ class Category(models.Model):
         return reverse('category', kwargs={"pk": self.id})
 
     def __unicode__(self):
-        return self.name
+        return unicode(self.name)
 
 class Category_to_brab(models.Model):
     auth_user = models.ForeignKey(User, null=True, blank=True, help_text="Creator")
@@ -78,7 +78,7 @@ class Category_to_brab(models.Model):
         return reverse('category_to_brab', kwargs={"pk": self.id})
 
     def __unicode__(self):
-        return self.id
+        return unicode(self.id)
 
 class Comments(models.Model):
     auth_user= models.ForeignKey(User, blank=True, null=True, help_text="Author")
@@ -104,7 +104,7 @@ class Comments(models.Model):
         return reverse('comments', kwargs={"pk": self.id})
 
     def __unicode__(self):
-        return self.comment
+        return unicode(self.comment)
 
 class Messages(models.Model):
     auth_user_from = models.ForeignKey(User, null=True, blank=True, related_name='auth_user_from', help_text="From")
@@ -127,7 +127,7 @@ class Messages(models.Model):
         return reverse('messages', kwargs={"pk": self.id})
 
     def __unicode__(self):
-        return self.message
+        return unicode(self.message)
 
 class Pictures(models.Model):
     brab = models.ForeignKey(Brab, blank=True, null=True, help_text="Brab")
@@ -165,7 +165,7 @@ class Pictures(models.Model):
         return reverse('pictures', kwargs = {"pk": self.id})
 
     def __unicode__(self):
-        return self.url
+        return unicode(self.title)
 
 
 class Tag(models.Model):
@@ -186,7 +186,7 @@ class Tag(models.Model):
         return reverse('tag', kwargs={"pk": self.id})
 
     def __unicode__(self):
-        return self.tag
+        return (self.tag)
 
 class Tag_to_brab(models.Model):
     auth_user= models.ForeignKey(User, null=True, blank=True, help_text="Creator")
@@ -207,7 +207,7 @@ class Tag_to_brab(models.Model):
         return reverse('tag_to_brab', kwargs={"pk": self.id})
 
     def __unicode__(self):
-        return self.id
+        return unicode(self.id)
 
 class Vote(models.Model):
     auth_user = models.ForeignKey(User, help_text="Creator")
@@ -228,7 +228,7 @@ class Vote(models.Model):
         return reverse('vote', kwargs={"pk": self.id})
 
     def __unicode__(self):
-        return self.name
+        return unicode(self.name)
 
 class Vote_to_brab(models.Model):
     auth_user = models.ForeignKey(User, null=True, blank=True, help_text="Creator")
@@ -269,7 +269,7 @@ class Vote_totals(models.Model):
         return reverse('vote_totals', kwargs={"pk": self.id})
 
     def __unicode__(self):
-        return self.id
+        return unicode(self.id)
 
 class Attribute(models.Model):
     auth_user = models.ForeignKey(User, help_text="Creator")
@@ -290,7 +290,7 @@ class Attribute(models.Model):
         return reverse('attribute', kwargs={"pk": self.id})
 
     def __unicode__(self):
-        return self.name
+        return unicode(self.name)
 
 class Attribute_to_brab(models.Model):
     auth_user = models.ForeignKey(User, null=True, blank=True, help_text="Creator")
@@ -311,7 +311,7 @@ class Attribute_to_brab(models.Model):
         return reverse('attribute_to_brab', kwargs={"pk": self.id})
 
     def __unicode__(self):
-        return self.id
+        return unicode(self.id)
 
 class Follower_to_followee(models.Model):
     follower = models.ForeignKey(User, related_name='user_followers', null=True, blank=True, help_text="Follower")
@@ -331,5 +331,5 @@ class Follower_to_followee(models.Model):
         return reverse('follower_to_followee', kwargs={"pk": self.id})
 
     def __unicode__(self):
-        return str(self.followee_id)
+        return unicode(self.followee_id)
 
